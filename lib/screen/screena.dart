@@ -53,11 +53,9 @@ class _ScreenAState extends State<ScreenA> {
   }
 
   Future<void> _openScreenB(BuildContext context) async {
-    var route = MaterialPageRoute(
-      builder: (context) => ScreenB(name: _name),
-    );
-    var result = await Navigator.push(context, route);
-    if (result != null) {
+    var result =
+        await Navigator.pushNamed(context, '/screen-b', arguments: _name);
+    if (result != null && result is int) {
       setState(() {
         _result = result;
       });
